@@ -10,23 +10,19 @@ Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
 */
 var addTwoNumbers = function(l1, l2) {
-    let arr1 = ''
-    let arr2 = ''
-    while(l1){
-        arr1+=l1.val
-        l1=l1.next
+    let l3 = new ListNode(0)
+    nodeSum(l1, l2, l3, 0)
+    function nodeSum(n1, n2, n3, extraSum) {
+        let currnnode = ((n1.val || 0) + (n2.val || 0) + extraSum) + ''
+        let currentExtraSum = 0
+        if (currnnode.length > 1) {
+            currentExtraSum = currnnode[0] * 1
+        }
+        n3.val = currnnode[currnnode.length - 1] * 1
+        if (n1.next || n2.next || currentExtraSum) {
+            n3.next = new ListNode(0)
+            nodeSum(n1.next || {}, n2.next || {}, n3.next, currentExtraSum)
+        }
     }
-    while(l2){
-        arr2+=l2.val
-        l2=l2.next
-    }
-    let arr3 = (arr1*1+arr2*1).toString().split``.map(v=>v*1)
-    let push=(node,data)=>{
-        let newNode = new ListNode(data)
-        newNode.next=node
-        return newNode
-    }
-    let list = null
-    arr3.map(v=>list=push(list,v))
-    return list
+    return l3
 };
