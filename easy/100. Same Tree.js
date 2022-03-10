@@ -30,6 +30,7 @@ Input:     1         1
 
 Output: false
 */
+
 var isSameTree = function(p, q) {
     return JSON.stringify(p)===JSON.stringify(q)
 };
