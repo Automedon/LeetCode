@@ -3,7 +3,6 @@ Given an array A of strings made only from lowercase letters, return a list of a
 
 You may return the answer in any order.
 
-
 Example 1:
 
 Input: ["bella","label","roller"]
