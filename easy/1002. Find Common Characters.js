@@ -19,6 +19,7 @@ Note:
 1 <= A[i].length <= 100
 A[i][j] is a lowercase letter
 */
+
 var commonChars = function(a) {
   const obj = a.map(word => word.split``.reduce((a, b) => ((a[b] = a[b] ? a[b] + 1 : 1), a), {}));
   return a[0].split``.reduce((arr, letter) => {
