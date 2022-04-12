@@ -3,7 +3,6 @@ Given two strings first and second, consider occurrences in some text of the for
 
 Return an array of all the words third for each occurrence of "first second third".
 
- 
 
 Example 1:
 
