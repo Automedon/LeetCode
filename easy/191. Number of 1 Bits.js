@@ -41,3 +41,8 @@ const hammingWeight = (n) => {
 
 	return count;
 };
+
+var hammingWeight = function(n) {
+    const arrayOfOnes = n.toString(2).match(new RegExp(/1/,`g`));
+    return arrayOfOnes ? arrayOfOnes.length : 0
+};
