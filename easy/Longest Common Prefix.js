@@ -16,18 +16,13 @@ Note:
 
 All given inputs are in lowercase letters a-z.
 */
-var longestCommonPrefix = function(strs) {
-    let tmp=strs[0];
-    for(let i=1;i<strs.length;i++)
-    {
-        for(let j=0;j<tmp.length;j++)
-        {
-            if(strs[i][j]!=tmp[j])
-            {
-                tmp=tmp.substr(0,j);
-                break;
-            }
+var longestCommonPrefix = function(str) {
+    let prefix = str[0];
+    for(let i=1;i<str.length;i++){
+        if(!str[i].startsWith(prefix)) {
+            prefix = prefix.slice(0,-1)
+            i--
         }
     }
-    return tmp || "";
+    return prefix
 };
