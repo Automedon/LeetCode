@@ -15,15 +15,10 @@ Output:
 */
 
 var findDisappearedNumbers = function(nums) {
-    const sortedSet = [...new Set(nums)].sort((a,b) => a-b)
-    const result = []
-    
-    for(let i=1, j=0; i<= nums.length; i++,j++) {
-        if(i !== sortedSet[j]) {
-            result.push(i)
-            j--
-        }
+    const arr = [];
+    const hash = new Set(nums)
+    for(let i =1;i<=nums.length;i++){
+        if(!hash.has(i)) arr.push(i)
     }
-    
-    return result
+    return arr
 };
