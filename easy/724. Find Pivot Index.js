@@ -39,13 +39,13 @@ Constraints:
 -1000 <= nums[i] <= 1000
 */
 var pivotIndex = function(nums) {
-    for(let i=0;i<nums.length;i++){
-        if(sum(nums.slice(0,i))===sum(nums.slice(i+1))){
-            return i
-        }
+    let leftSum = 0;
+    let rightSum = nums.slice(1).reduce((a,b)=>a+b,0);
+    for (let i = 0;i<nums.length;i++){
+        if(leftSum === rightSum) return i;
+        leftSum+=nums[i];
+        rightSum-=nums[i+1]
     }
-    return -1
+        
+    return -1;
 };
-
-
-const sum = (arr)=>arr.reduce((a,b)=>a+b,0)
