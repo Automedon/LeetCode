@@ -29,17 +29,13 @@ Follow up: Could you optimize your algorithm to use only O(rowIndex) extra space
 */
 
 var getRow = function(rowIndex) {
-    if(!rowIndex) return [1];
-    
-    let res = [1, 1]
-    
-    while(--rowIndex) {
-        const next = [];
-        
-        for(let i = 0; i < res.length-1; i++) {
-            next.push(res[i] + res[i+1]);
+    const arr = [[1],[1,1]];
+    for(let i = 2;i<=rowIndex;i++){
+        for(let j=1;j<i;j++){
+            if(!arr[i]) arr[i] = [1];
+            arr[i].push(arr[i-1][j-1]+arr[i-1][j])
         }
-        res = [1, ...next, 1];
+        arr[i].push(1)
     }
-    return res;
+    return arr[rowIndex]
 };
