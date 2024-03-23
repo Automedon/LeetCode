@@ -36,13 +36,14 @@ Constraints:
 1 <= arr.length <= 100
 1 <= arr[i] <= 1000
 */
-var sumOddLengthSubarrays = function(arr) {
     let sum = [];
     let howMany = 1;
     while(howMany<=arr.length){
       for(let i=0;i<arr.length;i++){
         if(arr.slice(i,howMany+i).length===howMany){
           sum.push(...arr.slice(i,howMany+i))
+        } else {
+          break
         }
       }
       howMany+=2
