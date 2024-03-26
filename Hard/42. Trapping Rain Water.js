@@ -24,18 +24,16 @@ n == height.length
 var trap = function(height) {
     if(height.length === 0) return 0
     let ans = 0;
-    const size = height.length;
-    const leftMax = [height[0]];
-    const rightMax = [];
-    for (let i=1;i<size;i++){
-      leftMax[i] = Math.max(height[i],leftMax[i-1])
+    const leftArr = [];
+    let rightArr = [];
+    for(let i=0;i<height.length;i++){
+      leftArr.push(Math.max(height[i],leftArr[i-1]||0))
     }
-    rightMax[size-1] = height[size-1];
-    for(let i = size - 2;i>=0;i--){
-      rightMax[i] = Math.max(height[i], rightMax[i+1])
+    for(let i=height.length-1;i>=0;i--){
+      rightArr[i]=(Math.max(height[i],rightArr[i+1]||0))
     }
-    for(let i =1;i<size-1;i++){
-      ans += Math.min(leftMax[i],rightMax[i])-height[i]
+    for(let i=0;i<height.length;i++){
+      ans += Math.min(leftArr[i],rightArr[i])-height[i]
     }
-    return ans
+    return ans;
 };
