@@ -33,3 +33,14 @@ Return false.
 var isSubtree = function(s, t) {
     return JSON.stringify(s).indexOf(JSON.stringify(t))!==-1
 };
+
+const dfsT = (r1, r2) => {
+  if (!r1 && !r2) return true;
+  if (!r1 || !r2) return false;
+  if (r1.val !== r2.val) return false;
+  return dfsT(r1.left, r2.left) && dfsT(r1.right, r2.right)
+}
+var isSubtree = function (root, subRoot) {
+  if (!root) return false;
+  return dfsT(root, subRoot) || isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
+};
